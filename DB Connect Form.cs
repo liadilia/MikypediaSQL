@@ -25,7 +25,7 @@ namespace Mikypedia
             if (s != null)
             {
                 MessageBox.Show(s);
-                
+                this.Hide();
                 Editor = new MikyPediaSQLClient();
                 Editor.Show();
             }
