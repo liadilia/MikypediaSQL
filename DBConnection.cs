@@ -90,8 +90,8 @@ namespace Mikypedia
 
                 conn.ConnectionString = connectionString;
                 conn.Open();
-*/
-                MessageBox.Show("Connection Open  !");
+
+               
             }
 
             catch (MySql.Data.MySqlClient.MySqlException ex)
@@ -99,7 +99,7 @@ namespace Mikypedia
                 MessageBox.Show(ex.Message);
             }
 
-            return null;//  
+            return conn;
         }
 
 

@@ -38,7 +38,7 @@ namespace Mikypedia
             {
                 MessageBox.Show("Connection Open  !");
                 this.Hide();
-                Editor = new MikyPediaSQLClient();
+                Editor = new MikyPediaSQLClient(dbConn, DBType.Text);
                 Editor.Show();
             }
 

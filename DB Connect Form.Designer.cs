@@ -81,6 +81,7 @@ namespace Mikypedia
             this.host.Name = "host";
             this.host.Size = new System.Drawing.Size(424, 22);
             this.host.TabIndex = 3;
+            this.host.Text = "hosting2095618.online.pro";
             this.host.TextChanged += new System.EventHandler(this.host_TextChanged);
             // 
             // label3
@@ -100,6 +101,7 @@ namespace Mikypedia
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(424, 22);
             this.name.TabIndex = 5;
+            this.name.Text = "00324868_habittracker";
             // 
             // label4
             // 
@@ -119,6 +121,7 @@ namespace Mikypedia
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(424, 22);
             this.username.TabIndex = 7;
+            this.username.Text = "00324868_habittracker";
             this.username.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label5
@@ -148,6 +151,7 @@ namespace Mikypedia
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(424, 22);
             this.password.TabIndex = 9;
+            this.password.Text = "00324868_habittracker";
             // 
             // connect
             // 

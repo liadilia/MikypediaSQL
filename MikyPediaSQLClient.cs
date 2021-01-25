@@ -20,10 +20,14 @@ namespace Mikypedia
     {
 
 
-        DBConnection connection = null;
-        public MikyPediaSQLClient()
+        DbConnection conn = null;
+        String dbType = null;
+        DataTable table = new DataTable();
+        public MikyPediaSQLClient(DbConnection conn, String dbType)
         {
             InitializeComponent();
+            this.conn = conn;
+            this.dbType = dbType;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,15 +35,27 @@ namespace Mikypedia
            
             String query = Query.Text;
 
-
-
-            MySqlDataAdapter MyDA = new MySqlDataAdapter();
-            if (connection.conn != null)
+               
+            if (this.conn != null)
             {
-       //         MyDA.SelectCommand = new MySqlCommand(query, connection.conn);
 
-                DataTable table = new DataTable();
-                MyDA.Fill(table);
+                switch (dbType)
+                {
+                    case "MySQL":
+                        MySqlDataAdapter dataAdapterMySQL = new MySqlDataAdapter();
+                        dataAdapterMySQL.SelectCommand = new MySqlCommand(query, (MySqlConnection)conn);
+                        dataAdapterMySQL.Fill(table);
+                        break;
+
+                    case "MSSQL":
+                        SqlDataAdapter dataAdapterMSSQL = new SqlDataAdapter();
+                        dataAdapterMSSQL.SelectCommand = new SqlCommand(query, (SqlConnection)conn);
+                        dataAdapterMSSQL.Fill(table);
+                        break;
+
+                }
+
+
                 BindingSource bSource = new BindingSource();
                 bSource.DataSource = table;
                 Result.DataSource = bSource;
@@ -54,11 +70,11 @@ namespace Mikypedia
 
         {
 
-            connection = new DBConnection(DBUrl.Text, DBName.Text, User.Text, Password.Text);
+       //     connection = new DBConnection(DBUrl.Text, DBName.Text, User.Text, Password.Text);
             String query = "show tables";
             MySqlDataAdapter MyDA = new MySqlDataAdapter();
        //     MyDA.SelectCommand = new MySqlCommand(query, connection.conn);
-            if (connection.conn== null)
+            if (this.conn== null)
             {
                 MessageBox.Show("Conn is null");
             }
