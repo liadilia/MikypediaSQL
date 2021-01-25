@@ -116,7 +116,7 @@ namespace Mikypedia
 
     enum DbTypes { 
     
-        MySQL, MSSQL, PostgreSQL
+        MySQL, MSSQL
     }
 
     class DBConnection

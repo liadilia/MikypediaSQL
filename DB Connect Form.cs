@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,12 +20,18 @@ namespace Mikypedia
         private void connect_Click_1(object sender, EventArgs e)
 
         {
-            string s = host.Text + " " + name.Text + " " + username.Text + " " + password.Text;
-       //  connection = new DBConnection( host.Text, name.Text, username.Text, password.Text);
-          
-            if (s != null)
+         
+            string connetionString;
+            SqlConnection cnn;
+            connetionString = @"Data Source=" + host.Text + "; Initial Catalog=" + name.Text + "; Integrated Security = True";
+            //  connetionString = @"Data Source="+ host.Text+"; Initial Catalog="+ name.Text+"; User ID="+ username.Text+"; Password="+ password.Text+"\"";
+            cnn = new SqlConnection(connetionString);
+            cnn.Open();
+           
+
+            if (cnn != null)
             {
-                MessageBox.Show(s);
+                MessageBox.Show("Connection Open  !");
                 this.Hide();
                 Editor = new MikyPediaSQLClient();
                 Editor.Show();
