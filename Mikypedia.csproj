@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBConnection.cs" />
+    <Compile Include="DatabaseConnectionBuilder.cs" />
     <Compile Include="DB Connect Form.cs">
       <SubType>Form</SubType>
     </Compile>

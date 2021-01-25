@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +15,15 @@ namespace Mikypedia
 {
     public partial class DBConnectForm : Form
     {
-        private DBConnection connection;
-      
+      /*  private DatabaseConnectionBuilder connection;
+      */
         private MikyPediaSQLClient Editor;
+        
 
         private void connect_Click_1(object sender, EventArgs e)
 
         {
-
+          
             Enum.TryParse(DBType.Text, out DbTypes type);
 
             DbConnection dbConn = new DatabaseConnectionBuilder()
@@ -78,6 +80,21 @@ namespace Mikypedia
         private void host_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void DBConnectForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IntegratedSecurity_CheckedChanged(object sender, EventArgs e)
+        {
+            if (WAuth.Checked)
+            {
+                DBType.Text = "MSSQL";
+                username.Enabled = false;
+                password.Enabled = false;
+            }
         }
     }
 }

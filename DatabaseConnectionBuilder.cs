@@ -143,7 +143,7 @@ namespace Mikypedia
         MySQL, MSSQL
     }
 
-    class DBConnection
+  /*  class DBConnection
     {
         
         public DbConnection conn;
@@ -184,7 +184,7 @@ namespace Mikypedia
             }
 
         }
-    }
+    }*/
 
        
     }
