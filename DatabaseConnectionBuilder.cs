@@ -117,7 +117,7 @@ namespace Mikypedia
                 string connectionString;
                 
                 connectionString = @"Data Source=" + this.host + "; Initial Catalog=" + this.dbName + "; Integrated Security = True";
-                //  connetionString = @"Data Source="+ host.Text+"; Initial Catalog="+ name.Text+"; User ID="+ username.Text+"; Password="+ password.Text+"\"";
+            
                 cnn = new SqlConnection(connectionString);
                 cnn.Open();
              
@@ -142,49 +142,6 @@ namespace Mikypedia
     
         MySQL, MSSQL
     }
-
-  /*  class DBConnection
-    {
-        
-        public DbConnection conn;
-        
-        //Constructor
-        public DBConnection(string server, string database, string uid, string password)
-        {
-            Initialize(server, database, uid, password);
-        }
-
-   
-
-
-        //Initialize values
-        private void Initialize(string server, string database, string uid, string password)
-        {
-            DbConnection dbcon = new DatabaseConnectionBuilder()
-                .withType(DbTypes.MySQL)
-                .setHost("asda")
-                .build();
-
-            string connectionString;
-          
-            connectionString = "server="+ server +"; database="+ database +" ;userid=" + uid+ " ;password=" + password;
-            try
-            {
-
-                conn = new MySql.Data.MySqlClient.MySqlConnection();
-                conn.ConnectionString = connectionString;
-                conn.Open();
-
-                MessageBox.Show("Connection Open  !");
-            }
-
-            catch (MySql.Data.MySqlClient.MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-    }*/
 
        
     }
