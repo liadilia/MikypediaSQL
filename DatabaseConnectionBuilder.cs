@@ -77,31 +77,24 @@ namespace Mikypedia
 
         private DbConnection buildMySQLConnection() {
 
-            MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection();
-
+            MySqlConnection conn = new MySqlConnection();
             if (host == null)
             {
                 throw new Exception("missing hostname");
             }
-
             try
             {
               string  connectionString = "server=" + this.host + "; database=" + this.dbName + " ;userid=" + this.username + " ;password=" + this.password;
-
                 conn.ConnectionString = connectionString;
-                conn.Open();
-
-               
+                conn.Open();            
             }
 
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
             return conn;
         }
-
 
         private DbConnection buildMSSQLConnection()
         {
@@ -110,27 +103,17 @@ namespace Mikypedia
             {
                 throw new Exception("missing hostname");
             }
-
             try
             {
-
-                string connectionString;
-                
-                connectionString = @"Data Source=" + this.host + "; Initial Catalog=" + this.dbName + "; Integrated Security = True";
-            
+                string connectionString;                
+                connectionString = @"Data Source=" + this.host + "; Initial Catalog=" + this.dbName + "; Integrated Security = True";          
                 cnn = new SqlConnection(connectionString);
-                cnn.Open();
-             
+                cnn.Open();            
             }
-
-            catch (MySql.Data.MySqlClient.MySqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-
-
-
 
             return cnn;  
         }

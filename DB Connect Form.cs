@@ -88,6 +88,11 @@ namespace Mikypedia
                 username.Enabled = false;
                 password.Enabled = false;
             }
+            else
+            {
+                username.Enabled = true;
+                password.Enabled = true;
+            }
         }
     }
 }
