@@ -46,9 +46,10 @@ namespace Mikypedia
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(375, 9);
+            this.label1.Location = new System.Drawing.Point(500, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 13);
+            this.label1.Size = new System.Drawing.Size(142, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Mikypedia SQL Client";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -56,92 +57,104 @@ namespace Mikypedia
             // DBType
             // 
             this.DBType.FormattingEnabled = true;
-            this.DBType.Location = new System.Drawing.Point(270, 83);
+            this.DBType.Location = new System.Drawing.Point(360, 102);
+            this.DBType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DBType.Name = "DBType";
-            this.DBType.Size = new System.Drawing.Size(319, 21);
+            this.DBType.Size = new System.Drawing.Size(424, 24);
             this.DBType.TabIndex = 1;
             this.DBType.SelectedIndexChanged += new System.EventHandler(this.DBType_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(209, 86);
+            this.label2.Location = new System.Drawing.Point(279, 106);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.Size = new System.Drawing.Size(58, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "DB type";
             // 
             // host
             // 
-            this.host.Location = new System.Drawing.Point(270, 156);
+            this.host.Location = new System.Drawing.Point(360, 192);
+            this.host.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.host.Name = "host";
-            this.host.Size = new System.Drawing.Size(319, 20);
+            this.host.Size = new System.Drawing.Size(424, 22);
             this.host.TabIndex = 3;
+            this.host.TextChanged += new System.EventHandler(this.host_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(184, 159);
+            this.label3.Location = new System.Drawing.Point(245, 196);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 13);
+            this.label3.Size = new System.Drawing.Size(88, 17);
             this.label3.TabIndex = 4;
             this.label3.Text = "Hostname/IP";
             // 
             // name
             // 
-            this.name.Location = new System.Drawing.Point(270, 211);
+            this.name.Location = new System.Drawing.Point(360, 260);
+            this.name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(319, 20);
+            this.name.Size = new System.Drawing.Size(424, 22);
             this.name.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(203, 214);
+            this.label4.Location = new System.Drawing.Point(271, 263);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.Size = new System.Drawing.Size(66, 17);
             this.label4.TabIndex = 6;
             this.label4.Text = "DB name";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // username
             // 
-            this.username.Location = new System.Drawing.Point(270, 277);
+            this.username.Location = new System.Drawing.Point(360, 341);
+            this.username.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(319, 20);
+            this.username.Size = new System.Drawing.Size(424, 22);
             this.username.TabIndex = 7;
             this.username.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(199, 280);
+            this.label5.Location = new System.Drawing.Point(265, 345);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 13);
+            this.label5.Size = new System.Drawing.Size(73, 17);
             this.label5.TabIndex = 8;
             this.label5.Text = "Username";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(199, 343);
+            this.label6.Location = new System.Drawing.Point(265, 422);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 13);
+            this.label6.Size = new System.Drawing.Size(69, 17);
             this.label6.TabIndex = 10;
             this.label6.Text = "Password";
             // 
             // password
             // 
-            this.password.Location = new System.Drawing.Point(270, 340);
+            this.password.Location = new System.Drawing.Point(360, 418);
+            this.password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(319, 20);
+            this.password.Size = new System.Drawing.Size(424, 22);
             this.password.TabIndex = 9;
             // 
             // connect
             // 
-            this.connect.Location = new System.Drawing.Point(388, 398);
+            this.connect.Location = new System.Drawing.Point(517, 490);
+            this.connect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.connect.Name = "connect";
-            this.connect.Size = new System.Drawing.Size(75, 23);
+            this.connect.Size = new System.Drawing.Size(100, 28);
             this.connect.TabIndex = 11;
             this.connect.Text = "Connect";
             this.connect.UseVisualStyleBackColor = true;
@@ -149,9 +162,9 @@ namespace Mikypedia
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.connect);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.password);
@@ -164,6 +177,7 @@ namespace Mikypedia
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DBType);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

@@ -8,20 +8,21 @@ using System.Windows.Forms;
 
 
 using System.Data.Common;
+using System.Data.SqlClient;
 
 namespace Mikypedia
 {
 
 
     class DatabaseConnectionBuilder {
-        private string type;
+        private DbTypes type;
         private string host = "localhost";
         private string username = "root";
         private string password= "";
         private string dbName;
         public DatabaseConnectionBuilder withType(DbTypes type)
         {
-
+            this.type = type;
             return this;
         }
 
@@ -61,11 +62,11 @@ namespace Mikypedia
                 throw new Exception("Missing database type");
             }
 
-            if (type == "MySQL") {
+            if (type ==DbTypes.MySQL) {
                 return buildMySQLConnection();
             }
 
-            if (type == "MSSQL")
+            if (type == DbTypes.MSSQL)
             {
                 return buildMSSQLConnection();
             }
@@ -76,6 +77,8 @@ namespace Mikypedia
 
         private DbConnection buildMySQLConnection() {
 
+            MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection();
+
             if (host == null)
             {
                 throw new Exception("missing hostname");
@@ -83,8 +86,8 @@ namespace Mikypedia
 
             try
             {
-               
-              /*  conn = new MySql.Data.MySqlClient.MySqlConnection();
+              string  connectionString = "server=" + this.host + "; database=" + this.dbName + " ;userid=" + this.username + " ;password=" + this.password;
+
                 conn.ConnectionString = connectionString;
                 conn.Open();
 */
@@ -102,13 +105,34 @@ namespace Mikypedia
 
         private DbConnection buildMSSQLConnection()
         {
-
+            SqlConnection cnn = null;
             if (host == null)
             {
                 throw new Exception("missing hostname");
             }
 
-            return null;//  
+            try
+            {
+
+                string connectionString;
+                
+                connectionString = @"Data Source=" + this.host + "; Initial Catalog=" + this.dbName + "; Integrated Security = True";
+                //  connetionString = @"Data Source="+ host.Text+"; Initial Catalog="+ name.Text+"; User ID="+ username.Text+"; Password="+ password.Text+"\"";
+                cnn = new SqlConnection(connectionString);
+                cnn.Open();
+             
+            }
+
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+
+
+
+            return cnn;  
         }
 
     }

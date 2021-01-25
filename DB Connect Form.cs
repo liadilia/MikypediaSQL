@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -20,16 +21,20 @@ namespace Mikypedia
         private void connect_Click_1(object sender, EventArgs e)
 
         {
-         
-            string connetionString;
-            SqlConnection cnn;
-            connetionString = @"Data Source=" + host.Text + "; Initial Catalog=" + name.Text + "; Integrated Security = True";
-            //  connetionString = @"Data Source="+ host.Text+"; Initial Catalog="+ name.Text+"; User ID="+ username.Text+"; Password="+ password.Text+"\"";
-            cnn = new SqlConnection(connetionString);
-            cnn.Open();
-           
 
-            if (cnn != null)
+            Enum.TryParse(DBType.Text, out DbTypes type);
+
+            DbConnection dbConn = new DatabaseConnectionBuilder()
+                .withType(type)
+                .setHost(host.Text)
+                .setdbName(name.Text)
+                .setUsername(username.Text)
+                .setPassword(password.Text)
+                .build();
+
+       
+
+            if (dbConn != null)
             {
                 MessageBox.Show("Connection Open  !");
                 this.Hide();
@@ -70,6 +75,9 @@ namespace Mikypedia
 
         }
 
-      
+        private void host_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
