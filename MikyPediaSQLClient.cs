@@ -21,9 +21,9 @@ namespace Mikypedia
 
 
         DbConnection conn = null;
-        String dbType = null;
-        DataTable table = new DataTable();
-        public MikyPediaSQLClient(DbConnection conn, String dbType)
+        string dbType = null;
+        
+        public MikyPediaSQLClient(DbConnection conn, string dbType)
         {
             InitializeComponent();
             this.conn = conn;
@@ -35,7 +35,22 @@ namespace Mikypedia
            
             String query = Query.Text;
 
-               
+            setResults(Result, query);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+
+        {
+    
+            String query = "show tables";
+            setResults(tables, query);
+
+        }
+
+
+        private void setResults(DataGridView view, String query)
+        {
+            DataTable table = new DataTable();
             if (this.conn != null)
             {
 
@@ -58,32 +73,12 @@ namespace Mikypedia
 
                 BindingSource bSource = new BindingSource();
                 bSource.DataSource = table;
-                Result.DataSource = bSource;
+                view.DataSource = bSource;
             }
             else
             {
                 MessageBox.Show("Connection with DB is not yet established");
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-
-        {
-
-       //     connection = new DBConnection(DBUrl.Text, DBName.Text, User.Text, Password.Text);
-            String query = "show tables";
-            MySqlDataAdapter MyDA = new MySqlDataAdapter();
-       //     MyDA.SelectCommand = new MySqlCommand(query, connection.conn);
-            if (this.conn== null)
-            {
-                MessageBox.Show("Conn is null");
-            }
-            DataTable table = new DataTable();
-            MyDA.Fill(table);
-            BindingSource bSource = new BindingSource();
-            bSource.DataSource = table;
-            tables.DataSource = bSource;
-
 
         }
 
