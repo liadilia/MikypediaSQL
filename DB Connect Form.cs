@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Mikypedia
 {
-    public partial class Form1 : Form
+    public partial class DBConnectForm : Form
     {
         private DBConnection connection;
       
@@ -38,7 +38,7 @@ namespace Mikypedia
             {
                 MessageBox.Show("Connection Open  !");
                 this.Hide();
-                Editor = new MikyPediaSQLClient(dbConn, DBType.Text);
+                Editor = new MikyPediaSQLClient(dbConn, DBType.Text, this.host.Text, this.name.Text);
                 Editor.Show();
             }
 
@@ -50,7 +50,7 @@ namespace Mikypedia
 
 
 
-        public Form1()
+        public DBConnectForm()
         {
             InitializeComponent();
         }

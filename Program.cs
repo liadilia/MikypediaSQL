@@ -16,7 +16,7 @@ namespace Mikypedia
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new DBConnectForm());
          //  Application.Run(new MikyPediaSQLClient());
         }
     }

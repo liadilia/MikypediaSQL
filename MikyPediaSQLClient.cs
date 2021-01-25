@@ -23,11 +23,15 @@ namespace Mikypedia
         DbConnection conn = null;
         string dbType = null;
         
-        public MikyPediaSQLClient(DbConnection conn, string dbType)
+        public MikyPediaSQLClient(DbConnection conn, string dbType, String host, String db)
         {
             InitializeComponent();
             this.conn = conn;
             this.dbType = dbType;
+            this.DBUrl.Text = host;
+            this.DBName.Text = db;
+            String query = "show tables";
+            setResults(tables, query);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -41,9 +45,11 @@ namespace Mikypedia
         private void button2_Click(object sender, EventArgs e)
 
         {
-    
-            String query = "show tables";
-            setResults(tables, query);
+
+            this.conn.Close();
+            this.Hide();
+            DBConnectForm connectionForm = new DBConnectForm();
+            connectionForm.Show();
 
         }
 

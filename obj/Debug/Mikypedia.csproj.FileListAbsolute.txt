@@ -44,7 +44,6 @@ C:\Users\Lia\Desktop\Mikypedia2-master\bin\Debug\MySql.Data.xml
 C:\Users\Lia\Desktop\Mikypedia2-master\obj\Debug\Mikypedia.csproj.CopyComplete
 C:\Users\ghita\Documents\GitHub\MikypediaSQL\obj\Debug\Mikypedia.csprojAssemblyReference.cache
 C:\Users\ghita\Documents\GitHub\MikypediaSQL\obj\Debug\Mikypedia.exe.config
-C:\Users\ghita\Documents\GitHub\MikypediaSQL\obj\Debug\Mikypedia.Form1.resources
 C:\Users\ghita\Documents\GitHub\MikypediaSQL\obj\Debug\Mikypedia.MikyPediaSQLClient.resources
 C:\Users\ghita\Documents\GitHub\MikypediaSQL\obj\Debug\Mikypedia.Properties.Resources.resources
 C:\Users\ghita\Documents\GitHub\MikypediaSQL\obj\Debug\Mikypedia.csproj.GenerateResource.cache
@@ -69,3 +68,4 @@ C:\Users\ghita\Documents\GitHub\MikypediaSQL\bin\Debug\System.Numerics.Vectors.d
 C:\Users\ghita\Documents\GitHub\MikypediaSQL\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\ghita\Documents\GitHub\MikypediaSQL\bin\Debug\MySql.Data.xml
 C:\Users\ghita\Documents\GitHub\MikypediaSQL\obj\Debug\Mikypedia.csproj.CopyComplete
+C:\Users\ghita\Documents\GitHub\MikypediaSQL\obj\Debug\Mikypedia.DBConnectForm.resources

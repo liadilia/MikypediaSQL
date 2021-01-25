@@ -1,7 +1,7 @@
 ﻿
 namespace Mikypedia
 {
-    partial class Form1
+    partial class DBConnectForm
     {
         /// <summary>
         /// Required designer variable.
@@ -57,11 +57,15 @@ namespace Mikypedia
             // DBType
             // 
             this.DBType.FormattingEnabled = true;
+            this.DBType.Items.AddRange(new object[] {
+            "MySQL",
+            "MSSQL"});
             this.DBType.Location = new System.Drawing.Point(360, 102);
             this.DBType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DBType.Name = "DBType";
             this.DBType.Size = new System.Drawing.Size(424, 24);
             this.DBType.TabIndex = 1;
+            this.DBType.Text = "MySQL";
             this.DBType.SelectedIndexChanged += new System.EventHandler(this.DBType_SelectedIndexChanged);
             // 
             // label2
