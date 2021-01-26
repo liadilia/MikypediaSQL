@@ -68,7 +68,7 @@ namespace Mikypedia
             if (DBType.Text== "MSSQL")
             {
                 host.Text = "localhost";
-                name.Text = "AdventureWorks";
+                name.Text = "lab1";
                 WAuth.Checked = true;
             }
         }
