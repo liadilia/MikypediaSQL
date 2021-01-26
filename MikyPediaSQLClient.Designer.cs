@@ -70,7 +70,7 @@ namespace Mikypedia
             this.Query.Name = "Query";
             this.Query.Size = new System.Drawing.Size(853, 125);
             this.Query.TabIndex = 3;
-            this.Query.Text = "";
+            this.Query.Text = "select * from habits";
             // 
             // Execute
             // 
