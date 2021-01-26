@@ -70,6 +70,11 @@ namespace Mikypedia
                 host.Text = "localhost";
                 name.Text = "lab1";
                 WAuth.Checked = true;
+            } else if (DBType.Text == "MySQL"){
+                WAuth.Checked = false;
+                host.Text = "hosting2095618.online.pro";
+                name.Text = "00324868_habittracker";
+
             }
         }
 
