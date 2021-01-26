@@ -31,7 +31,7 @@ namespace Mikypedia
 
                 
                 this.Hide();
-                Editor = new MikyPediaSQLClient(dbConn);
+                Editor = new MikyPediaSQLClient(dbConn, DBType.Text);
                 Editor.Show();
             } catch (Exception exception)
             {
@@ -65,7 +65,12 @@ namespace Mikypedia
 
         private void DBType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (DBType.Text== "MSSQL")
+            {
+                host.Text = "localhost";
+                name.Text = "AdventureWorks";
+                WAuth.Checked = true;
+            }
         }
 
         private void host_TextChanged(object sender, EventArgs e)

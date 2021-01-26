@@ -23,13 +23,23 @@ namespace Mikypedia
         DbConnection conn = null;
         string dbType = null;
         
-        public MikyPediaSQLClient(DbConnection conn)
+        public MikyPediaSQLClient(DbConnection conn, string type)
         {
             InitializeComponent();
             this.conn = conn;
             this.DBUrl.Text = conn.DataSource;
             this.DBName.Text = conn.Database;
-            String query = "show tables";
+            dbType = type;
+            string query = "";
+            switch (dbType)
+            {
+                case "MySQL":  query = "show tables";
+                    break;
+                case "MSSQL": query = "SELECT * FROM " + conn.Database+".INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'";
+                    break;
+            }
+
+            
             setResults(tables, query);
         }
 
@@ -58,17 +68,23 @@ namespace Mikypedia
             DbCommand cmd = conn.CreateCommand();
             cmd.CommandText = query;
 
-            // https://stackoverflow.com/questions/3488962/how-to-create-a-dbdataadapter-given-a-dbcommand-or-dbconnection
-            DbDataAdapter adapter = DbProviderFactories.GetFactory(conn).CreateDataAdapter();
+            try
+            {
+                // https://stackoverflow.com/questions/3488962/how-to-create-a-dbdataadapter-given-a-dbcommand-or-dbconnection
+                DbDataAdapter adapter = DbProviderFactories.GetFactory(conn).CreateDataAdapter();
 
-            adapter.SelectCommand = cmd;
-            DataTable table = new DataTable();
-            adapter.Fill(table);
+                adapter.SelectCommand = cmd;
+                DataTable table = new DataTable();
+                adapter.Fill(table);
 
-            BindingSource bSource = new BindingSource();
-            bSource.DataSource = table;
-            view.DataSource = bSource;
-
+                BindingSource bSource = new BindingSource();
+                bSource.DataSource = table;
+                view.DataSource = bSource;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Query invalid" + exception);
+            }
             
         }
 
