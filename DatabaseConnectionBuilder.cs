@@ -15,7 +15,7 @@ namespace Mikypedia
 
 
     class DatabaseConnectionBuilder {
-        private DbTypes type;
+        private DbTypes type = DbTypes.Undefined;
         private string host = "localhost";
         private string username = "root";
         private string password= "";
@@ -57,27 +57,24 @@ namespace Mikypedia
 
         public DbConnection build()
         {
-            if (type == null)
+            if (type == DbTypes.Undefined)
             {
                 throw new Exception("Missing database type");
             }
 
-            if (type ==DbTypes.MySQL) {
+            if (type == DbTypes.MySQL) {
                 return buildMySQLConnection();
-            }
-
-            if (type == DbTypes.MSSQL)
-            {
+            } else if (type == DbTypes.MSSQL) {
                 return buildMSSQLConnection();
+            } else      {
+                throw new Exception("Unsupported database type " + type);
             }
-
-
-            return null;
         }
 
         private DbConnection buildMySQLConnection() {
 
             MySqlConnection conn = new MySqlConnection();
+            
             if (host == null)
             {
                 throw new Exception("missing hostname");
@@ -123,7 +120,7 @@ namespace Mikypedia
 
     enum DbTypes { 
     
-        MySQL, MSSQL
+        Undefined = -1, MySQL = 1, MSSQL = 2
     }
 
        

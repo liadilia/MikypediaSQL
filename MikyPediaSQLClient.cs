@@ -23,13 +23,12 @@ namespace Mikypedia
         DbConnection conn = null;
         string dbType = null;
         
-        public MikyPediaSQLClient(DbConnection conn, string dbType, String host, String db)
+        public MikyPediaSQLClient(DbConnection conn)
         {
             InitializeComponent();
             this.conn = conn;
-            this.dbType = dbType;
-            this.DBUrl.Text = host;
-            this.DBName.Text = db;
+            this.DBUrl.Text = conn.DataSource;
+            this.DBName.Text = conn.Database;
             String query = "show tables";
             setResults(tables, query);
         }
@@ -54,7 +53,26 @@ namespace Mikypedia
         }
 
 
-        private void setResults(DataGridView view, String query)
+        private void setResults(DataGridView view, String query) {
+
+            DbCommand cmd = conn.CreateCommand();
+            cmd.CommandText = query;
+
+            // https://stackoverflow.com/questions/3488962/how-to-create-a-dbdataadapter-given-a-dbcommand-or-dbconnection
+            DbDataAdapter adapter = DbProviderFactories.GetFactory(conn).CreateDataAdapter();
+
+            adapter.SelectCommand = cmd;
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+
+            BindingSource bSource = new BindingSource();
+            bSource.DataSource = table;
+            view.DataSource = bSource;
+
+            
+        }
+
+        private void _setResults(DataGridView view, String query)
         {
             DataTable table = new DataTable();
             if (this.conn != null)
@@ -63,6 +81,7 @@ namespace Mikypedia
                 switch (dbType)
                 {
                     case "MySQL":
+
                         MySqlDataAdapter dataAdapterMySQL = new MySqlDataAdapter();
                         dataAdapterMySQL.SelectCommand = new MySqlCommand(query, (MySqlConnection)conn);
                         dataAdapterMySQL.Fill(table);
@@ -109,6 +128,25 @@ namespace Mikypedia
         }
 
         private void Password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Result_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+
+
+
+        private void Result_CellEnter_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Result_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
 
         }

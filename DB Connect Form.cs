@@ -8,8 +8,7 @@ namespace Mikypedia
 {
     public partial class DBConnectForm : Form
     {
-      /*  private DatabaseConnectionBuilder connection;
-      */
+    
         private MikyPediaSQLClient Editor;
         
 
@@ -19,30 +18,29 @@ namespace Mikypedia
           
             Enum.TryParse(DBType.Text, out DbTypes type);
 
-            DbConnection dbConn = new DatabaseConnectionBuilder()
-                .withType(type)
-                .setHost(host.Text)
-                .setdbName(name.Text)
-                .setUsername(username.Text)
-                .setPassword(password.Text)
-                .build();
-
-       
-
-            if (dbConn != null)
+            try
             {
-                MessageBox.Show("Connection Open  !");
+
+                DbConnection dbConn = new DatabaseConnectionBuilder()
+                    .withType(type)
+                    .setHost(host.Text)
+                    .setdbName(name.Text)
+                    .setUsername(username.Text)
+                    .setPassword(password.Text)
+                    .build();
+
+                
                 this.Hide();
-                Editor = new MikyPediaSQLClient(dbConn, DBType.Text, this.host.Text, this.name.Text);
+                Editor = new MikyPediaSQLClient(dbConn);
                 Editor.Show();
+            } catch (Exception exception)
+            {
+                MessageBox.Show("Error when attempting to open the connection " + exception);
             }
 
 
-         
+
         }
-
-
-
 
 
         public DBConnectForm()

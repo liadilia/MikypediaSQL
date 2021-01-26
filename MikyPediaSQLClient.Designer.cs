@@ -46,18 +46,18 @@ namespace Mikypedia
             // Result
             // 
             this.Result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Result.Location = new System.Drawing.Point(701, 437);
-            this.Result.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Result.Location = new System.Drawing.Point(691, 269);
+            this.Result.Margin = new System.Windows.Forms.Padding(4);
             this.Result.Name = "Result";
             this.Result.RowHeadersWidth = 51;
-            this.Result.Size = new System.Drawing.Size(1229, 338);
+            this.Result.Size = new System.Drawing.Size(853, 506);
             this.Result.TabIndex = 0;
             // 
             // DBUrl
             // 
             this.DBUrl.Enabled = false;
             this.DBUrl.Location = new System.Drawing.Point(138, 21);
-            this.DBUrl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DBUrl.Margin = new System.Windows.Forms.Padding(4);
             this.DBUrl.Name = "DBUrl";
             this.DBUrl.Size = new System.Drawing.Size(305, 22);
             this.DBUrl.TabIndex = 2;
@@ -65,17 +65,17 @@ namespace Mikypedia
             // 
             // Query
             // 
-            this.Query.Location = new System.Drawing.Point(701, 41);
-            this.Query.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Query.Location = new System.Drawing.Point(691, 41);
+            this.Query.Margin = new System.Windows.Forms.Padding(4);
             this.Query.Name = "Query";
-            this.Query.Size = new System.Drawing.Size(1228, 346);
+            this.Query.Size = new System.Drawing.Size(853, 125);
             this.Query.TabIndex = 3;
             this.Query.Text = "";
             // 
             // Execute
             // 
-            this.Execute.Location = new System.Drawing.Point(1233, 395);
-            this.Execute.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Execute.Location = new System.Drawing.Point(1084, 200);
+            this.Execute.Margin = new System.Windows.Forms.Padding(4);
             this.Execute.Name = "Execute";
             this.Execute.Size = new System.Drawing.Size(137, 28);
             this.Execute.TabIndex = 4;
@@ -86,7 +86,7 @@ namespace Mikypedia
             // Connect
             // 
             this.Connect.Location = new System.Drawing.Point(32, 119);
-            this.Connect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Connect.Margin = new System.Windows.Forms.Padding(4);
             this.Connect.Name = "Connect";
             this.Connect.Size = new System.Drawing.Size(411, 28);
             this.Connect.TabIndex = 9;
@@ -98,7 +98,7 @@ namespace Mikypedia
             // 
             this.DBName.Enabled = false;
             this.DBName.Location = new System.Drawing.Point(138, 63);
-            this.DBName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DBName.Margin = new System.Windows.Forms.Padding(4);
             this.DBName.Name = "DBName";
             this.DBName.Size = new System.Drawing.Size(305, 22);
             this.DBName.TabIndex = 10;
@@ -118,7 +118,7 @@ namespace Mikypedia
             // 
             this.tables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tables.Location = new System.Drawing.Point(33, 180);
-            this.tables.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tables.Margin = new System.Windows.Forms.Padding(4);
             this.tables.Name = "tables";
             this.tables.RowHeadersWidth = 51;
             this.tables.Size = new System.Drawing.Size(628, 595);
@@ -130,7 +130,7 @@ namespace Mikypedia
             this.label1.Location = new System.Drawing.Point(29, 24);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 21);
+            this.label1.Size = new System.Drawing.Size(88, 17);
             this.label1.TabIndex = 15;
             this.label1.Text = "Hostname/IP";
             // 
@@ -140,7 +140,7 @@ namespace Mikypedia
             this.label2.Location = new System.Drawing.Point(698, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 21);
+            this.label2.Size = new System.Drawing.Size(115, 17);
             this.label2.TabIndex = 16;
             this.label2.Text = "Your query here:";
             // 
@@ -148,7 +148,7 @@ namespace Mikypedia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1976, 790);
+            this.ClientSize = new System.Drawing.Size(1623, 798);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tables);
@@ -159,7 +159,7 @@ namespace Mikypedia
             this.Controls.Add(this.Query);
             this.Controls.Add(this.DBUrl);
             this.Controls.Add(this.Result);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MikyPediaSQLClient";
             this.Text = "Mikypedia";
             this.Load += new System.EventHandler(this.Form1_Load);
