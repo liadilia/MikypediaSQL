@@ -65,10 +65,11 @@ namespace Mikypedia
             // 
             // Query
             // 
+            this.Query.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Query.Location = new System.Drawing.Point(691, 41);
             this.Query.Margin = new System.Windows.Forms.Padding(4);
             this.Query.Name = "Query";
-            this.Query.Size = new System.Drawing.Size(853, 125);
+            this.Query.Size = new System.Drawing.Size(2083, 125);
             this.Query.TabIndex = 3;
             this.Query.Text = "select * from habits";
             // 
