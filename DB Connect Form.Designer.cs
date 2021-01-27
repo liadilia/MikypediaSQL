@@ -145,7 +145,6 @@ namespace Mikypedia
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(198, 20);
             this.password.TabIndex = 9;
-            this.password.Text = "00324868_habittracker";
             // 
             // connect
             // 
