@@ -31,7 +31,7 @@ namespace Mikypedia
 
                 
                 this.Hide();
-                Editor = new MikyPediaSQLClient(dbConn, DBType.Text);
+                Editor = new MikyPediaSQLClient(dbConn);
                 Editor.Show();
             } catch (Exception exception)
             {
@@ -102,5 +102,11 @@ namespace Mikypedia
                 password.Enabled = true;
             }
         }
+
+        private void DBConnectForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+        
     }
 }

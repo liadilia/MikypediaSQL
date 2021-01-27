@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
+using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -23,24 +24,34 @@ namespace Mikypedia
         DbConnection conn = null;
         string dbType = null;
         
-        public MikyPediaSQLClient(DbConnection conn, string type)
+        public MikyPediaSQLClient(DbConnection conn)
         {
             InitializeComponent();
             this.conn = conn;
             this.DBUrl.Text = conn.DataSource;
             this.DBName.Text = conn.Database;
-            dbType = type;
-            string query = "";
-            switch (dbType)
+            
+           
+           tables.Columns.Add("table","Table");
+            DataTable schema = conn.GetSchema("Tables");
+            foreach (DataRow row in schema.Rows)
             {
-                case "MySQL":  query = "show tables";
-                    break;
-                case "MSSQL": query = "SELECT * FROM " + conn.Database+".INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'";
-                    break;
+
+                tables.Rows.Add( row[2].ToString());
             }
 
-            
-            setResults(tables, query);
+
+            //
+            // switch (dbType)
+            // {
+            //     case "MySQL":  query = "show tables";
+            //         break;
+            //     case "MSSQL": query = "SELECT * FROM " + conn.Database+".INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'";
+            //         break;
+            // }
+            //
+            //
+            // setResults(tables, query);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,7 +59,7 @@ namespace Mikypedia
            
             String query = Query.Text;
 
-            setResults(Result, query);
+            setResults(resultGrid, query);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -62,33 +73,52 @@ namespace Mikypedia
 
         }
 
+        private DataTable table;
+        private DbDataAdapter adapter;
+        private void setResults(DataGridView view, string query)
+        {
 
-        private void setResults(DataGridView view, String query) {
-
+            query = query.Trim();
             DbCommand cmd = conn.CreateCommand();
             cmd.CommandText = query;
-
+            logText.AppendText("> " + query);
+            logText.AppendText(Environment.NewLine);
             try
             {
-                // https://stackoverflow.com/questions/3488962/how-to-create-a-dbdataadapter-given-a-dbcommand-or-dbconnection
-                DbDataAdapter adapter = DbProviderFactories.GetFactory(conn).CreateDataAdapter();
 
-                adapter.SelectCommand = cmd;
-                DataTable table = new DataTable();
-                adapter.Fill(table);
+                int affectedRows = 0;
+                if (query.ToLower().StartsWith("select"))
+                {
+                    // https://stackoverflow.com/questions/3488962/how-to-create-a-dbdataadapter-given-a-dbcommand-or-dbconnection
+                     adapter = DbProviderFactories.GetFactory(conn).CreateDataAdapter();
+      
+                    adapter.SelectCommand = cmd; 
+                    table = new DataTable();
+                    adapter.Fill(table);
 
-                BindingSource bSource = new BindingSource();
-                bSource.DataSource = table;
-                view.DataSource = bSource;
+                    BindingSource bSource = new BindingSource();
+                    bSource.DataSource = table;
+                    resultGrid.DataSource = bSource;
+                    affectedRows = table.Rows.Count;
+
+                }
+                else
+                {
+                    affectedRows = cmd.ExecuteNonQuery();
+                }
+                
+                logText.AppendText("  affected rows " + affectedRows);
+                logText.AppendText(Environment.NewLine);
+
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Query invalid" + exception);
+                MessageBox.Show("Query invalid " + exception);
             }
             
         }
 
-        private void _setResults(DataGridView view, String query)
+        /*private void _setResults(DataGridView view, String query)
         {
             DataTable table = new DataTable();
             if (this.conn != null)
@@ -121,7 +151,7 @@ namespace Mikypedia
                 MessageBox.Show("Connection with DB is not yet established");
             }
 
-        }
+        }*/
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -148,23 +178,18 @@ namespace Mikypedia
 
         }
 
-        private void Result_CellContentClick(object sender, DataGridViewCellEventArgs e)
+      
+    
+
+        private void MikyPediaSQLClient_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Application.Exit();
 
         }
 
-
-
-
-
-        private void Result_CellEnter_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void Result_CellLeave(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        private string editedValue;
+        
+        
+      
     }
 }
