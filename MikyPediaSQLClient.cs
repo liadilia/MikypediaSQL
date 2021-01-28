@@ -188,8 +188,11 @@ namespace Mikypedia
         }
 
         private string editedValue;
-        
-        
-      
+
+        private void tables_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            setResults(resultGrid, "SELECT * FROM " + ((DataGridView)sender).Rows[e.RowIndex].Cells[0].Value); 
+            
+        }
     }
 }
